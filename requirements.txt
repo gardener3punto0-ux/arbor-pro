@@ -1,0 +1,9 @@
+streamlit
+openai
+streamlit-js-eval
+streamlit-folium
+folium
+pandas
+fpdf
+python-dotenv
+openpyxl

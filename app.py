@@ -111,9 +111,13 @@ with t1:
         mi_correo = st.text_input("Tu Gmail")
         mi_pass = st.text_input("Pass App Google", type="password")
     
-    loc = get_geolocation()
-    gps_actual = f"{loc['coords']['latitude']}, {loc['coords']['longitude']}" if loc else "0.0, 0.0"
-    st.caption(f"📍 GPS ACTIVADO: {gps_actual}")
+    # Reemplaza tu bloque de geolocalización por este:
+loc = get_geolocation()
+if loc and 'coords' in loc:
+    gps_actual = f"{loc['coords'].get('latitude', 0)}, {loc['coords'].get('longitude', 0)}"
+else:
+    gps_actual = "Localizando..."
+st.caption(f"📍 GPS: {gps_actual}")
 
     fuente = st.radio("Entrada:", ["📷 Cámara", "📂 Galería"], horizontal=True)
     fotos = st.camera_input("Scanner") if fuente == "📷 Cámara" else st.file_uploader("Subir fotos", accept_multiple_files=True)
